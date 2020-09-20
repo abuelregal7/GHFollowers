@@ -13,9 +13,11 @@ class GFItemInfoVC: UIViewController {
     let stackView       = UIStackView()
     let itemInfoViewOne = GFItemInfoView()
     let itemInfoViewtwo = GFItemInfoView()
-    let actionButton    = GFButton()
+    let actionButton    = GFButton(backgroundColor: .clear, title: "", cornerRadius: 10)
     
     var user: User!
+    
+    var delegate: UserInfoVCDelegate!
     
     init(user: User) {
         
@@ -34,12 +36,24 @@ class GFItemInfoVC: UIViewController {
         configureBackgroundView()
         layoutUI()
         configureStackView()
+        configureActionButton()
     }
     
     private func configureBackgroundView() {
         
         view.layer.cornerRadius = 18
         view.backgroundColor    = .secondarySystemBackground
+        
+    }
+    
+    private func configureActionButton() {
+        
+        actionButton.addTarget(self, action: #selector(actionbuttonTapped), for: .touchUpInside)
+        
+    }
+    @objc func actionbuttonTapped() {
+        
+        
         
     }
     
